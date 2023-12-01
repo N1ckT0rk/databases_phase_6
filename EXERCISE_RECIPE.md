@@ -86,25 +86,25 @@ students is foreign key
 
 5. Write the SQL
 -- EXAMPLE
--- file: albums_table.sql
+-- file: student_directory_2.sql
 
 -- Replace the table name, columm names and types.
 
 -- Create the table without the foreign key first.
-CREATE TABLE artists (
+CREATE TABLE cohorts (
   id SERIAL PRIMARY KEY,
   name text,
+  starting_date date
 );
 
 -- Then the table with the foreign key second.
-CREATE TABLE albums (
+CREATE TABLE students (
   id SERIAL PRIMARY KEY,
-  title text,
-  release_year int,
+  name text,
 -- The foreign key name is always {other_table_singular}_id
-  artist_id int,
-  constraint fk_artist foreign key(artist_id)
-    references artists(id)
+  cohort_id int,
+  constraint fk_cohort foreign key(cohort_id)
+    references cohorts(id)
     on delete cascade
 );
 6. Create the tables
